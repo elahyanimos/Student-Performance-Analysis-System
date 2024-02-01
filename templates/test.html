@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Data</title>
+</head>
+<body>
+    <h1>Uploaded CSV Data</h1>
+    {% if df_logs is defined and not df_logs.empty %}
+        {{ df_logs.to_html()|safe }}
+    {% else %}
+        <p>No data available or invalid CSV file uploaded.</p>
+    {% endif %}
+</body>
+</html>

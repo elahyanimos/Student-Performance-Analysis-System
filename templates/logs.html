@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Display</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            color: #888;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Uploaded CSV Data</h1>
+    {% if df_logs is defined and not df_logs.empty %}
+        <div style="overflow-x:auto;">
+            {{ df_logs.to_html(classes='table', escape=False)|safe }}
+        </div>
+        <h2>Correlation between Interactions Count and Average Grade</h2>
+        <p>Correlation Value: {{ correlation }}</p>
+    {% else %}
+        <p>No data available or invalid CSV file uploaded.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Statistics</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .table-container {
+            width: 80%;
+            margin-top: 20px;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        p {
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data Statistics 1</h1>
+    <div class="table-container">
+        {% if stats_1 is defined and stats_1 is not none and stats_1 is iterable and stats_1 is not string %}
+            {{ stats_1.to_html()|safe }}
+        {% else %}
+            <p>No data available for statistics 1.</p>
+        {% endif %}
+    </div>
+
+    <h1>Data Statistics 2</h1>
+    <div class="table-container">
+        {% if stats_2 is defined and stats_2 is not none and stats_2 is iterable and stats_2 is not string %}
+            {{ stats_2.to_html()|safe }}
+        {% else %}
+            <p>No data available for statistics 2.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

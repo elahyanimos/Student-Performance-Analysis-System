@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Histograms</title>
+</head>
+<body>
+    <h1>Histograms 1</h1>
+    {% if plot_url_1 is defined and plot_url_1 is not none %}
+        <img src="data:image/png;base64,{{ plot_url_1 }}" alt="Histograms">
+    {% else %}
+        <p>No data available for Histograms 1.</p>
+    {% endif %}
+
+    <h1>Histograms 2</h1>
+    {% if plot_url_2 is defined and plot_url_2 is not none %}
+        <img src="data:image/png;base64,{{ plot_url_2 }}" alt="Histograms">
+    {% else %}
+        <p>No data available for Histograms 2.</p>
+    {% endif %}
+</body>
+</html>
+

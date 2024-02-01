@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Distribution Test Results</title>
+</head>
+<body>
+    <h1>Distribution Test Results</h1>
+    {% if results %}
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Distribution</th>
+                <th>p-value</th>
+                <th>Test Statistic</th>
+                <th>Fitted Parameters</th>
+            </tr>
+            {% for dist_name, result in results.items() %}
+            <tr>
+                <td>{{ dist_name }}</td>
+                <td>{{ result['p_value'] }}</td>
+                <td>{{ result['test_statistic'] }}</td>
+                <td>{{ result['params'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No results available.</p>
+    {% endif %}
+</body>
+</html>

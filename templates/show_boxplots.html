@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boxplots</title>
+</head>
+<body>
+    <h1>Boxplots 1</h1>
+    {% if plot_box_1 is defined and plot_box_1 is not none %}
+        <img src="data:image/png;base64,{{ plot_box_1 }}" alt="Boxplots">
+    {% else %}
+        <p>No data available for Boxplots 1.</p>
+    {% endif %}
+
+    <h1>Boxplots 2</h1>
+    {% if plot_box_2 is defined and plot_box_2 is not none %}
+        <img src="data:image/png;base64,{{ plot_box_2 }}" alt="Boxplots">
+    {% else %}
+        <p>No data available for Boxplots 2.</p>
+    {% endif %}
+</body>
+</html>
+

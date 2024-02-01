@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Data</title>
+</head>
+<body>
+    <h1>Uploaded CSV Data</h1>
+    {% if dataframe is defined and not dataframe.empty %}
+        {{ dataframe.to_html()|safe }}
+        <br>
+        <form action="/show_histograms" method="post">
+            {% for col in categorical_columns %}
+                <label for="{{ col }}">{{ col }}:</label>
+                <select name="{{ col }}" id="{{ col }}">
+                    {% for option in categorical_columns_options[col] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select><br>
+            {% endfor %}
+            <input type="submit" value="Display Histograms">
+        </form>
+        
+        
+        <form action="/show_stats" method="post">
+            <input type="submit" value="Display Statistics">
+        </form>
+        <form action="/show_boxplots" method="post">
+            {% for col in categorical_columns %}
+                <label for="{{ col }}">{{ col }}:</label>
+                <select name="{{ col }}" id="{{ col }}">
+                    {% for option in categorical_columns_options[col] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select><br>
+            {% endfor %}
+            <input type="submit" value="Display Boxplots">
+        </form>
+        <form action="/test_distributions" method="post">
+            <label for="select_column">Select Column for Distribution Test:</label>
+            <select name="selected_column" id="select_column">
+                {% for column in dataframe.columns[2:] %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Test Distributions">
+        </form>
+        <form action="/show_heatmap" method="get"> <!-- New form for heatmap -->
+            <input type="submit" value="Display Heatmap">
+        </form>
+    {% else %}
+        <p>No data available or invalid CSV file uploaded.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heatmaps</title>
+</head>
+<body>
+    <h1>Heatmap 1</h1>
+    {% if plot_heatmap_1 is defined and plot_heatmap_1 is not none %}
+        <img src="data:image/png;base64,{{ plot_heatmap_1 }}" alt="Heatmap Image">
+    {% else %}
+        <p>No data available for Heatmap 1.</p>
+    {% endif %}
+
+    <h1>Heatmap 2</h1>
+    {% if plot_heatmap_2 is defined and plot_heatmap_2 is not none %}
+        <img src="data:image/png;base64,{{ plot_heatmap_2 }}" alt="Heatmap Image">
+    {% else %}
+        <p>No data available for Heatmap 2.</p>
+    {% endif %}
+</body>
+</html>
+
+
+
+
+
+
